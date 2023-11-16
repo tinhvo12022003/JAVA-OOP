@@ -22,16 +22,24 @@ public class GUI_view_customer extends javax.swing.JFrame {
         initComponents();
         
         ArrayList<Customer> lst_customer = new ArrayList<>(new Customer().readFile_Customer());
+        ArrayList<Customer_VIP> lst_cv = new ArrayList<>(new Customer_VIP().readFileKH_VIP());
         
-        String colum[] = {"Mã KH", "Tên KH", "SĐT", "Địa chỉ"};
+        String colum[] = {"Mã KH", "Tên KH", "SĐT", "Địa chỉ", "VIP"};
         
-        String data[][] = new String[lst_customer.size()][4];
+        String data[][] = new String[lst_customer.size()][5];
         
         for(int i=0; i<lst_customer.size(); i++){
             data[i][0] = lst_customer.get(i).getMa_KH();
             data[i][1] = lst_customer.get(i).getHoten();
             data[i][2] = lst_customer.get(i).getPhone();
             data[i][3] = lst_customer.get(i).getAddress().getSoNha() + " " + lst_customer.get(i).getAddress().getXa() + " " +lst_customer.get(i).getAddress().getHuyen() + " "+ lst_customer.get(i).getAddress().getTinh();
+            String vip = new String("");
+            for(int j=0; j<lst_cv.size(); j++){
+                if(lst_customer.get(i).getMa_KH().equals(lst_cv.get(j).getMa_KH())){
+                    vip = new String("VIP");
+                }
+            }
+            data[i][4] = vip; 
         }
         
         JTable jtable = new JTable(data, colum);
