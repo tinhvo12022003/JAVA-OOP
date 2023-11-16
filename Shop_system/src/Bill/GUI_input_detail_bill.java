@@ -242,30 +242,34 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        String colums[] = {"MÃ SP", "TÊN SP", "SỐ LƯỢNG", "TỔNG"};
+        try {
+            String colums[] = {"MÃ SP", "TÊN SP", "SỐ LƯỢNG", "TỔNG"};
 
-        ArrayList<product> t = new ArrayList<>();
+            ArrayList<product> t = new ArrayList<>();
 
-        ArrayList<product> lst_product = new ArrayList<>(new product().readFile_products());
-        String ma_sp = new String(String.valueOf(this.jComboBox1.getSelectedItem()).split("-")[1]);
+            ArrayList<product> lst_product = new ArrayList<>(new product().readFile_products());
+            String ma_sp = new String(String.valueOf(this.jComboBox1.getSelectedItem()).split("-")[1]);
 
-        for (product p : lst_product) {
-            if (ma_sp.equals(p.getMa_sp())) {
-                t.add(p);
+            for (product p : lst_product) {
+                if (ma_sp.equals(p.getMa_sp())) {
+                    t.add(p);
+                }
             }
-        }
 
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setColumnIdentifiers(colums);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setColumnIdentifiers(colums);
 
-        for (int i = 0; i < t.size(); i++) {
-            String maSP = new String(t.get(i).getMa_sp());
-            String tenSP = new String(t.get(i).getTen_sp());
-            String soLuong = new String(this.jTextField1.getText());
-            String tong = String.valueOf(t.get(i).getGia_sp() * Integer.parseInt(this.jTextField1.getText()));
+            for (int i = 0; i < t.size(); i++) {
+                String maSP = new String(t.get(i).getMa_sp());
+                String tenSP = new String(t.get(i).getTen_sp());
+                String soLuong = new String(this.jTextField1.getText());
+                String tong = String.valueOf(t.get(i).getGia_sp() * Integer.parseInt(this.jTextField1.getText()));
 
-            Object[] row = {maSP, tenSP, soLuong, tong};
-            model.addRow(row);
+                Object[] row = {maSP, tenSP, soLuong, tong};
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
