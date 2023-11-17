@@ -220,17 +220,46 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //ghi vào detail_bill.txt từ JTable
+//        try {
+//            String hang_hoa = new String((String) this.jComboBox1.getSelectedItem());
+//            String so_luong = new String(this.jTextField1.getText());
+//
+//            String ma_hang = hang_hoa.split("-")[1];
+//
+//            FileWriter fw = new FileWriter("E:\\Buoi5B2111903\\detail_bill.txt", true);
+//            fw.write(ma_hang + "\n" + so_luong + "\n");
+//            fw.flush();
+//            fw.close();
+//        } catch (IOException ex) {
+//            Logger.getLogger(GUI_input_detail_bill.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        //0 2
+        ArrayList<detail_bill> lst_db = new ArrayList<>();
+        ArrayList<product> lst_product = new ArrayList<>(new product().readFile_products());
+
+        for (int i = 0; i < this.jTable1.getRowCount(); i++) {
+            String ma_sp = new String(String.valueOf(this.jTable1.getValueAt(i, 0)));
+            int soluong_mua = Integer.parseInt(String.valueOf(this.jTable1.getValueAt(i, 2)));
+
+            for (product p : lst_product) {
+                if (ma_sp.equals(p.getMa_sp())) {
+                    detail_bill temp = new detail_bill();
+                    temp.setProduct(p);
+                    temp.setSoluongMua(soluong_mua);
+                    lst_db.add(temp);
+                }
+            }
+        }
+
         try {
-            // TODO add your handling code here:
-            String hang_hoa = new String((String) this.jComboBox1.getSelectedItem());
-            String so_luong = new String(this.jTextField1.getText());
-
-            String ma_hang = hang_hoa.split("-")[1];
-
             FileWriter fw = new FileWriter("E:\\Buoi5B2111903\\detail_bill.txt", true);
-            fw.write(ma_hang + "\n" + so_luong + "\n");
-            fw.flush();
+            for (detail_bill db : lst_db) {
+                fw.write(db.getproduct().getMa_sp() + "\n" + db.getSoluongMua() + "\n");
+                fw.flush();
+            }
             fw.close();
+            //cập nhật lại số lượng hàng trong kho vào tệp products.txt
         } catch (IOException ex) {
             Logger.getLogger(GUI_input_detail_bill.class.getName()).log(Level.SEVERE, null, ex);
         }

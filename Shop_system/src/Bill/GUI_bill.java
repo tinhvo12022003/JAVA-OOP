@@ -161,10 +161,7 @@ public class GUI_bill extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -393,6 +390,12 @@ public class GUI_bill extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(GUI_bill.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.jTextField1.setText("");
+        this.jTextField2.setText("");
+        this.jTextField3.setText("");
+        this.jTextField4.setText("");
+        this.jTextField5.setText("");
+        this.jTextField6.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
