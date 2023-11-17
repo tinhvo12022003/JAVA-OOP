@@ -533,6 +533,15 @@ public class GUI_input_customer extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         getInfo_customer();
+        this.jTextField1.setText("");
+        this.jTextField2.setText("");
+        this.jTextField5.setText("");
+        this.jTextField6.setText("");
+        this.jTextField7.setText("");
+        this.jComboBox1.setSelectedIndex(0);
+        this.jComboBox2.setSelectedIndex(0);
+        this.jComboBox3.setSelectedIndex(0);
+        this.jTextField4.setText("");
 
     }//GEN-LAST:event_jButton2MouseClicked
 
