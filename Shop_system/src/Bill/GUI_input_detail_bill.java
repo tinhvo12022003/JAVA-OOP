@@ -55,6 +55,8 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +128,22 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
             }
         });
 
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(153, 153, 153));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setActionCommand("Xóa 1 hàng hóa");
+        jButton4.setLabel("Xóa hàng");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,9 +166,15 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField2)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -163,7 +187,9 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,8 +207,12 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(105, 105, 105))))
         );
 
         pack();
@@ -220,21 +250,7 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //ghi vào detail_bill.txt từ JTable
-//        try {
-//            String hang_hoa = new String((String) this.jComboBox1.getSelectedItem());
-//            String so_luong = new String(this.jTextField1.getText());
-//
-//            String ma_hang = hang_hoa.split("-")[1];
-//
-//            FileWriter fw = new FileWriter("E:\\Buoi5B2111903\\detail_bill.txt", true);
-//            fw.write(ma_hang + "\n" + so_luong + "\n");
-//            fw.flush();
-//            fw.close();
-//        } catch (IOException ex) {
-//            Logger.getLogger(GUI_input_detail_bill.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        //0 2
+
         ArrayList<detail_bill> lst_db = new ArrayList<>();
         ArrayList<product> lst_product = new ArrayList<>(new product().readFile_products());
 
@@ -296,11 +312,49 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
 
                 Object[] row = {maSP, tenSP, soLuong, tong};
                 model.addRow(row);
+                this.jComboBox2.addItem(maSP);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String columns[] = {"MÃ SP", "TÊN SP", "SỐ LƯỢNG", "TỔNG"};
+        DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+        model.setColumnIdentifiers(columns);
+
+        String ma_sp_delete = new String(String.valueOf(this.jComboBox2.getSelectedItem()));
+
+        Object[][] rowdata = new Object[this.jTable1.getRowCount()][this.jTable1.getColumnCount()];
+
+        for (int i = 0; i < this.jTable1.getRowCount(); i++) {
+            for (int j = 0; j < this.jTable1.getColumnCount(); j++) {
+                rowdata[i][j] = this.jTable1.getValueAt(i, j);
+            }
+        }
+        
+        model.setRowCount(0);
+
+        for (int i = 0; i < rowdata.length; i++) {
+            if (!ma_sp_delete.equals(rowdata[i][0])) {
+                Object[] row = {rowdata[i][0], rowdata[i][1], rowdata[i][2], rowdata[i][3]};
+                model.addRow(row);
+            }
+        }
+        
+        this.jComboBox2.setSelectedItem("");
+        
+        for(int i=0; i<this.jTable1.getRowCount(); i++){
+            this.jComboBox2.setSelectedItem(this.jTable1.getValueAt(i, 0));
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,7 +397,9 @@ public class GUI_input_detail_bill extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
