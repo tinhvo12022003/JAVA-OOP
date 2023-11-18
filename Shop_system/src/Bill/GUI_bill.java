@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,14 +27,11 @@ public class GUI_bill extends javax.swing.JFrame {
     /**
      * Creates new form GUI_bill
      */
-    public GUI_bill() {
+    public GUI_bill() throws IOException {
         initComponents();
-
-        detail_bill dt_bill = new detail_bill();
-
         try {
             int tong_tien = 0;
-            ArrayList<detail_bill> lst_detail = dt_bill.readFile_detail();
+            ArrayList<detail_bill> lst_detail = new ArrayList<>(new detail_bill().readFile_detail());
 
             for (detail_bill temp : lst_detail) {
                 tong_tien += temp.getSoluongMua() * temp.getproduct().getGia_sp();
@@ -44,6 +42,19 @@ public class GUI_bill extends javax.swing.JFrame {
             Logger.getLogger(GUI_bill.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        ArrayList<detail_bill> lst_detail = new ArrayList<>(new detail_bill().readFile_detail());        
+        
+        DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+        
+        for(int i=0; i<lst_detail.size(); i++){
+            Object[] row = {
+            lst_detail.get(i).getproduct().getMa_sp(), 
+            lst_detail.get(i).getproduct().getTen_sp(), 
+            lst_detail.get(i).getSoluongMua(),
+            lst_detail.get(i).getproduct().getGia_sp() * lst_detail.get(i).getSoluongMua()};
+            
+            model.addRow(row);
+        }
     }
 
     /**
@@ -164,7 +175,7 @@ public class GUI_bill extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "MÃ SP", "TÊN SP", "SỐ LƯỢNG", "TỔNG"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -396,6 +407,9 @@ public class GUI_bill extends javax.swing.JFrame {
         this.jTextField4.setText("");
         this.jTextField5.setText("");
         this.jTextField6.setText("");
+        
+        DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+        model.setRowCount(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -445,7 +459,11 @@ public class GUI_bill extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new GUI_bill().setVisible(true);
+                try {
+                    new GUI_bill().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(GUI_bill.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
