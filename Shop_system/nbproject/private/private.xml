@@ -3,10 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Buoi5B2111903/Shop_system/src/Bill/bill.java</file>
             <file>file:/E:/Buoi5B2111903/Shop_system/src/Bill/GUI_history_bill.java</file>
-            <file>file:/E:/Buoi5B2111903/Shop_system/src/Customer/Customer_VIP.java</file>
+            <file>file:/E:/Buoi5B2111903/Shop_system/src/Goods/GUI_warehouse.java</file>
+            <file>file:/E:/Buoi5B2111903/Shop_system/src/Goods/GUI_input_product.java</file>
+            <file>file:/E:/Buoi5B2111903/Shop_system/src/Customer/GUI_input_customer.java</file>
             <file>file:/E:/Buoi5B2111903/Shop_system/src/Bill/detail_bill.java</file>
+            <file>file:/E:/Buoi5B2111903/Shop_system/src/Customer/GUI_Delete_Customer.java</file>
+            <file>file:/E:/Buoi5B2111903/Shop_system/src/Customer/GUI_view_customer.java</file>
             <file>file:/E:/Buoi5B2111903/Shop_system/src/Bill/GUI_input_detail_bill.java</file>
+            <file>file:/E:/Buoi5B2111903/Shop_system/src/shop_system/GUI_system_shopping.java</file>
+            <file>file:/E:/Buoi5B2111903/Shop_system/src/Bill/GUI_bill.java</file>
+            <file>file:/E:/Buoi5B2111903/Shop_system/src/shop_system/Shop_system.java</file>
         </group>
     </open-files>
 </project-private>

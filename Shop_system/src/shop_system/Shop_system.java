@@ -17,6 +17,7 @@ public class Shop_system {
     //main
     public static void main(String[] args) {
         // TODO code application logic here
+        new GUI_system_shopping().setVisible(true);
     }
     
 }
